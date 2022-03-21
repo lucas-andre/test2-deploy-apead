@@ -1,0 +1,939 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/apollo-output.css" rel="stylesheet">
+  <link rel="icon" href="/content/favicon-alta-performance-ead.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+
+  <!-- FLICKKITY CAROUSEL CSS-->
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+  
+
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- FLOWBITE CSS -->
+  <!--<link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />-->
+
+  <!-- SCRIPTS JS-->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- AOS-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- TAILWIND CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- DARK MODE FLOWBITE -->
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- TITULO DO SITE -->
+  <title>Soluções EAD para Cursos Online, Empresas e Treinamento Corporativo | Alta Performance EaD</title>
+</head>
+
+<body class="dark:bg-slate-800">
+  <!-- HEADER - DESKTOP E MOBILE -->
+  <div class="bg-white z-50 fixed top-0 w-full dark:bg-slate-800 dark:shadow-xl ">
+    <div class="absolute inset-0 shadow z-30 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative z-20">
+      <div
+        class="max-w-screen-2xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 lg:py-6 md:justify-start md:space-x-10">
+
+        <!-- LOGO -->
+        <div>
+          <a href="#" class="flex">
+            <span class="sr-only">Alta Performance EAD</span>
+            <img class="h-6 w-auto sm:h-9" src="/content/logo-alta-performance-ead.svg" alt="">
+          </a>
+        </div>
+
+        <!-- TOGGLE MOBILE -->
+        <div class="-mr-2 -my-2 md:hidden">
+          <button type="button"
+            class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
+            aria-expanded="false">
+            <span class="sr-only">Abrir menu</span>
+            <!-- Heroicon name: outline/menu -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- MENUS -->
+        <div class="hidden pl-16 md:flex-1 md:flex md:items-center md:justify-between">
+          <nav class="flex space-x-10">
+
+            <a href="#" class="text-base font-medium text-gray-500 dark:text-gray-50  hover:text-gray-900 dark:hover:text-cyan-300"> Home </a>
+
+            <!-- SOLUÇÕES -->
+            <div>
+
+              <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
+              <button id="botao-header" type="button"
+                class="text-gray-500 dark:text-gray-50 dark:hover:text-cyan-300  group rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                aria-expanded="false">
+                <span>Soluções</span>
+                <!-- Heroicon name: solid/chevron-down - Item active: "text-gray-600", Item inactive: "text-gray-400" -->
+                <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-cyan-500" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+
+              <!--
+              'Solutions' flyout menu, show/hide based on flyout menu state.
+
+              Entering: "transition ease-out duration-200"
+                From: "opacity-0 -translate-y-1"
+                To: "opacity-100 translate-y-0"
+              Leaving: "transition ease-in duration-150"
+                From: "opacity-100 translate-y-0"
+                To: "opacity-0 -translate-y-1"
+            -->
+
+
+
+              <!--header soluções vai aqui-->
+              <div id="header-desktop" class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white dark:bg-slate-800">
+                <div class="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
+                  
+                  <!-- CARD INTERNO - SOLUÇÕES -->
+                  <a href="#" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700">
+                    <div class="flex md:h-full lg:flex-col">
+                      <div class="flex-shrink-0">
+                        <span
+                          class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-cyan-500 text-white sm:h-12 sm:w-12">
+                          <!-- Heroicon name: outline/play -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
+                        <div>
+                          <p class="text-base font-bold text-gray-900 dark:text-gray-200">Plataforma de cursos <br> online e treinamentos</p>
+                          <p class="mt-1 text-sm text-gray-500 font-medium dark:text-gray-400">Criamos Plataformas EADs personalizadas para Cursos Online e Empresas que investem em capacitação e treinamentos.</p>
+                        </div>
+                        <p class="mt-2 text-sm font-medium text-cyan-600 lg:mt-4">Saiba mais <span
+                            aria-hidden="true">&rarr;</span></p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- CARD INTERNO - SOLUÇÕES -->
+                  <a href="#" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700">
+                    <div class="flex md:h-full lg:flex-col">
+                      <div class="flex-shrink-0">
+                        <span
+                          class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-cyan-500 text-white sm:h-12 sm:w-12">
+                          <!-- Heroicon name: outline/device-mobile -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
+                        <div>
+                          <p class="text-base font-medium text-gray-900 dark:text-gray-200">Aplicativo Integrado <br> à Plataforma EAD</p>
+                          <p class="mt-1 text-sm text-gray-500 font-medium dark:text-gray-400">Conte com Aplicativo Nativo IOS e Android integrado à plataforma EAD com todas as funcionalidades.</p>
+                        </div>
+                        <p class="mt-2 text-sm font-medium text-cyan-600 lg:mt-4">Saiba mais <span
+                            aria-hidden="true">&rarr;</span></p>
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- CARD INTERNO - SOLUÇÕES -->
+                  <a href="#" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700">
+                    <div class="flex md:h-full lg:flex-col">
+                      <div class="flex-shrink-0">
+                        <span
+                          class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-cyan-500 text-white sm:h-12 sm:w-12">
+                          <!-- Heroicon name: outline/video-camera -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
+                        <div>
+                          <p class="text-base font-medium text-gray-900 dark:text-gray-200">Produção de cursos online</p>
+                          <p class="mt-1 text-sm text-gray-500 font-medium dark:text-gray-400">Estúdio Profissional de criação de Infoprodutos e Cursos Online. Gravação e edição de cursos online.</p>
+                        </div>
+                        <p class="mt-2 text-sm font-medium text-cyan-600 lg:mt-4">Saiba mais <span
+                            aria-hidden="true">&rarr;</span></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- FOOTER DO HEADER -->
+                <div class="bg-gray-50 dark:bg-slate-700">
+                  <div class="max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
+
+                    <!-- CARD HEADER INTERNO "FOOTER" - SOLUÇÕES-->
+                    <div class="flow-root">
+                      <a href="#"
+                        class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 dark:hover:bg-slate-600">
+                        <!-- Heroicon name: outline/check-circle -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="ml-3 dark:text-gray-200">Endereço</span>
+                      </a>
+                    </div>
+
+                    <!-- CARD HEADER INTERNO "FOOTER" - SOLUÇÕES-->
+                    <div class="flow-root">
+                      <a href="#"
+                        class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 dark:hover:bg-slate-600">
+                        <!-- Heroicon name: outline/phone -->
+                        <!-- <svg class="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 fill-gray-400" viewBox="0 0 737.509 740.824"><path fill-rule="evenodd" clip-rule="evenodd" d="M630.056 107.658C560.727 38.271 468.525.039 370.294 0 167.891 0 3.16 164.668 3.079 367.072c-.027 64.699 16.883 127.855 49.016 183.523L0 740.824l194.666-51.047c53.634 29.244 114.022 44.656 175.481 44.682h.151c202.382 0 367.128-164.689 367.21-367.094.039-98.088-38.121-190.32-107.452-259.707m-259.758 564.8h-.125c-54.766-.021-108.483-14.729-155.343-42.529l-11.146-6.613-115.516 30.293 30.834-112.592-7.258-11.543c-30.552-48.58-46.689-104.729-46.665-162.379C65.146 198.865 202.065 62 370.419 62c81.521.031 158.154 31.81 215.779 89.482s89.342 134.332 89.311 215.859c-.07 168.242-136.987 305.117-305.211 305.117m167.415-228.514c-9.176-4.591-54.286-26.782-62.697-29.843-8.41-3.061-14.526-4.591-20.644 4.592-6.116 9.182-23.7 29.843-29.054 35.964-5.351 6.122-10.703 6.888-19.879 2.296-9.175-4.591-38.739-14.276-73.786-45.526-27.275-24.32-45.691-54.36-51.043-63.542-5.352-9.183-.569-14.148 4.024-18.72 4.127-4.11 9.175-10.713 13.763-16.07 4.587-5.356 6.116-9.182 9.174-15.303 3.059-6.122 1.53-11.479-.764-16.07-2.294-4.591-20.643-49.739-28.29-68.104-7.447-17.886-15.012-15.466-20.644-15.746-5.346-.266-11.469-.323-17.585-.323-6.117 0-16.057 2.296-24.468 11.478-8.41 9.183-32.112 31.374-32.112 76.521s32.877 88.763 37.465 94.885c4.587 6.122 64.699 98.771 156.741 138.502 21.891 9.45 38.982 15.093 52.307 19.323 21.981 6.979 41.983 5.994 57.793 3.633 17.628-2.633 54.285-22.19 61.932-43.616 7.646-21.426 7.646-39.791 5.352-43.617-2.293-3.826-8.41-6.122-17.585-10.714"/></svg>
+                        <span class="ml-3 dark:text-gray-200">Fale com o consultor</span>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+            <a href="#" class="text-base font-medium text-gray-500 dark:text-gray-50  hover:text-gray-900 dark:hover:text-cyan-300"> Blog </a>
+            <a href="#" class="text-base font-medium text-gray-500 dark:text-gray-50  hover:text-gray-900 dark:hover:text-cyan-300"> Entre em contato </a>
+
+          </nav>
+
+          <!-- BOTÃO WHATSAPP  GRANDÃO-->
+          <div class="flex items-center md:ml-12">
+            <a href="#"
+              class="ml-8 inline-flex items-center justify-center px-4 py-1.5 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-lime-500 hover:bg--600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-8 w-8 pr-3 fill-white"
+                viewBox="0 0 737.509 740.824">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M630.056 107.658C560.727 38.271 468.525.039 370.294 0 167.891 0 3.16 164.668 3.079 367.072c-.027 64.699 16.883 127.855 49.016 183.523L0 740.824l194.666-51.047c53.634 29.244 114.022 44.656 175.481 44.682h.151c202.382 0 367.128-164.689 367.21-367.094.039-98.088-38.121-190.32-107.452-259.707m-259.758 564.8h-.125c-54.766-.021-108.483-14.729-155.343-42.529l-11.146-6.613-115.516 30.293 30.834-112.592-7.258-11.543c-30.552-48.58-46.689-104.729-46.665-162.379C65.146 198.865 202.065 62 370.419 62c81.521.031 158.154 31.81 215.779 89.482s89.342 134.332 89.311 215.859c-.07 168.242-136.987 305.117-305.211 305.117m167.415-228.514c-9.176-4.591-54.286-26.782-62.697-29.843-8.41-3.061-14.526-4.591-20.644 4.592-6.116 9.182-23.7 29.843-29.054 35.964-5.351 6.122-10.703 6.888-19.879 2.296-9.175-4.591-38.739-14.276-73.786-45.526-27.275-24.32-45.691-54.36-51.043-63.542-5.352-9.183-.569-14.148 4.024-18.72 4.127-4.11 9.175-10.713 13.763-16.07 4.587-5.356 6.116-9.182 9.174-15.303 3.059-6.122 1.53-11.479-.764-16.07-2.294-4.591-20.643-49.739-28.29-68.104-7.447-17.886-15.012-15.466-20.644-15.746-5.346-.266-11.469-.323-17.585-.323-6.117 0-16.057 2.296-24.468 11.478-8.41 9.183-32.112 31.374-32.112 76.521s32.877 88.763 37.465 94.885c4.587 6.122 64.699 98.771 156.741 138.502 21.891 9.45 38.982 15.093 52.307 19.323 21.981 6.979 41.983 5.994 57.793 3.633 17.628-2.633 54.285-22.19 61.932-43.616 7.646-21.426 7.646-39.791 5.352-43.617-2.293-3.826-8.41-6.122-17.585-10.714" />
+              </svg>
+
+              Fale com um consultor </a>
+          </div>
+
+
+
+        </div>
+
+        <!-- Toggle Dark Mode -->
+        <button id="theme-toggle" type="button"
+          class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-4">
+          <svg id="theme-toggle-dark-icon"
+            class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <svg onclick="
+            document.getElementById('logo').src='/content/logo-alta-performance-ead-dark.png';" id="theme-toggle-light-icon"
+            class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!--
+    Mobile menu, show/hide based on mobile menu state.
+
+    Entering: "duration-200 ease-out"
+      From: "opacity-0 scale-95"
+      To: "opacity-100 scale-100"
+    Leaving: "duration-100 ease-in"
+      From: "opacity-100 scale-100"
+      To: "opacity-0 scale-95"
+  -->
+    
+
+  <!-- header mobile vai aqui -->
+
+  </div>
+
+  <!-- CONTEÚDO -->
+  <!-- HERO -->
+  <div class="bg-blue-50 pt-32 dark:bg-slate-900">
+    <div class="max-w-screen-2xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4 lg:pb-40">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
+        <div class="grid grid-cols-1 items-center gap-y-10 gap-x-16 lg:grid-cols-2 text-center lg:text-left">
+          <div class="ml-5" data-aos="zoom-in-right" data-aos-offset="500" data-aos-duration="500">
+            <h1
+              class="text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-4xl md:text-6xl lg:text-5xl xl:text-5xl ">
+              <span class="block leading-snug">Soluções Personalizadas para</span>
+              <span
+                class="block text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 to-blue-600 xl:inline">Educação
+                à Distância [EAD]</span>
+            </h1>
+            <h2 class="mt-3 max-w-md mx-auto text-lg text-gray-500 dark:text-gray-200 sm:text-2xl md:mt-5 md:max-w-3xl">Produção e
+              tecnologia de Alta Performance!</h2>
+            <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
+              <div class="rounded-md shadow">
+                <a href="#"
+                  class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 md:py-4 md:text-lg md:px-10">
+                  Solicite um orçamento </a>
+              </div>
+              <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                <a href="#"
+                  class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-cyan-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                  Saiba mais </a>
+              </div>
+            </div>
+          </div>
+          <div data-aos="zoom-in-left" data-aos-offset="500" data-aos-duration="500" class="aspect-w-3 aspect-h-2 overflow-hidden mt-0 sm:mt-8">
+            <img src="/content/servicos-prestados-alta-performance-ead.png" class="object-center object-cover"
+              alt="Serviços prestados pela alta performance web - Na imagem: uma filmadora, um celular, um laptop e um computador de mesa, indicando quais serviços alcançamos.">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIVIDER -->
+  <!-- <div class="relative">
+    <div class="absolute inset-0 flex items-center px-32 pt-10" aria-hidden="true">
+      <div class="w-full border-t border-gray-300"></div>  
+    </div>
+    <br>
+  </div> -->
+
+
+  <!-- TÍTULO SEÇÃO - SOLUÇÕES -->
+  <div data-aos="fade-down" class="m-auto max-w-screen-2xl ">
+    <div class="ml-12 mt-20 max-w-screen-2xl m-auto">
+      <h2
+        class="font-sans m-6 text-center text-3xl mt-28 mb-16 font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+        <span class="inline-block mb-2"> Nossas soluções </span>
+      </h2>
+    </div>
+  </div>
+
+  <!-- CAROUSEL SOLUÇÕES -->
+  <div data-aos="fade-up" class="carousel m-auto max-w-screen-2xl mt-20" data-flickity='{ "autoPlay": 6000, "wrapAround": true, "pageDots": false }'>
+
+
+    <div class="carousel-cell mx-7">
+      <div class="pl-6 pr-6 lg:pr-6 py-5">
+        <div class=" rounded-xl rounded-b-lg">
+          <div class="flex">
+            <img src="/content/plataforma-desktop-alta-performance-ead.png" alt="boy with camera"
+              class="rounded-l-xl w-6/12 object-cover">
+            <div class="p-10 mx-6 bg-purple-600 rounded-lg">
+              <h3 class="font-bold text-white text-3xl">Plataforma EAD para Cursos Online e Empresas</h3>
+              <h2 class="text-xl text-white my-8">Criamos Plataformas EADs personalizadas para Cursos Online e Empresas que
+                investem em
+                capacitação e treinamentos.</h2>
+              <button
+                class="mt-2 rounded-lg px-6 py-2 bg-slate-50 text-xl font-semibold text-slate-700 shadow hover:shadow-xl duration-300">
+                SAIBA MAIS
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-cell mx-7">
+      <div class="pl-6 pr-6 lg:pr-6 py-5">
+        <div class=" rounded-xl rounded-b-lg">
+          <div class="flex">
+            <img src="/content/responsividade-alta-performance-ead.png" alt="boy with camera"
+              class="rounded-l-xl w-6/12 object-cover">
+            <div class="p-10 mx-6 bg-cyan-600 rounded-lg">
+              <h3 class="font-bold text-3xl text-white">Aplicativo Integrado a Plataforma EAD</h3>
+              <h2 class="text-xl text-white my-8">Conte com Aplicativo Nativo IOS e Android integrado à plataforma EAD com
+                todas as
+                funcionalidades</h2>
+              <button
+                class="mt-2 rounded-lg px-6 py-2 text-xl font-semibold bg-slate-50 text-slate-700 shadow hover:shadow-xl duration-300">
+                SAIBA MAIS
+              </button> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-cell mx-7">
+      <div class="pl-6 pr-6 lg:pr-6 py-5">
+        <div class="rounded-xl rounded-b-lg">
+          <div class="flex">
+            <img src="/content/producao-cursos-online-alta-performance-ead.png" alt="boy with camera"
+              class="rounded-l-xl w-6/12 object-cover">
+            <div class="p-10 mx-6 bg-orange-600 rounded-lg">
+              <h3 class="font-bold text-3xl text-white">Produção de Cursos Online</h3>
+              <h2 class="text-xl text-white my-8">Estúdio Profissional de criação de Infoprodutos e Cursos Online. Gravação e
+                edição de
+                cursos online.</h2>
+              <button
+                class="mt-2 rounded-lg px-6 py-2 text-xl font-semibold bg-slate-50 text-slate-700 shadow hover:shadow-xl duration-300">
+                SAIBA MAIS
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="bg-blue-50 dark:bg-slate-700 mt-32 py-16">
+
+    <div class="container m-auto max-w-screen-2xl bg-inherit">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+        <div data-aos="fade-right" class="py-32">
+          <img src="/content/plataforma-responsiva-alta-performance-ead.png" alt="">
+        </div>
+
+        <div data-aos="zoom-in-down" class=" text-left bg-white dark:bg-slate-900 py-8 px-4 my-5 mr-12 ml-8 rounded-xl shadow-md text-gray-700 dark:text-white">
+
+          <h2 class="font-sans m-6 text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+            <span class="inline-block mb-2">Entre em contato</span>
+          </h2>
+
+          <form>
+            <div class="m-6">
+              <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Seu nome</label>
+              <input type="text" id="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required="">
+            </div>
+
+            <div class="m-6">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Seu
+                email</label>
+              <input type="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required="" placeholder="seuemail@gmail.com">
+            </div>
+
+            <div class="m-6">
+              <label for="tel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Seu email</label>
+              <input type="tel" id="tel"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required="" placeholder="seuemail@gmail.com">
+            </div>
+
+            <div class="m-6">
+              <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Descrição
+                do seu projeto</label>
+              <textarea
+                class="block pt-2 pb-16 px-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+            </div>
+
+            <button type="submit"
+              class="mr-6 ml-6 w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 text-base font-medium rounded-md md:text-lg sm:w-auto px-10 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">ENVIAR</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RECURSOS DAS PLATAFORMAS EAD -->
+  <h2 data-aos="fade-down"
+    class="font-sans m-6 text-center text-3xl mt-28 mb-16 font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+    <span class="inline-block mb-2">Recursos das </span>
+    <span class="block text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-600 xl:inline">Plataformas
+      EAD</span>
+  </h2>
+  <div class="parent m-auto max-w-screen-2xl">
+
+    <div class="div1">
+
+    </div>
+
+    <div class="div2 ml-8 group">
+      <div class="max-w-md">
+        <div>
+          <div data-aos="fade-down"
+            class="flex ml-auto mr-0 items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-300 dark:bg-teal-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:scale-125 stroke-black dark:stroke-white" fill="none"
+              viewBox="0 0 24 24"  stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+        </div>
+        <h2 data-aos="fade-right" class="mb-2 text-xl font-semibold leading-5 text-right dark:text-gray-50">Conecte sua comunidade</h2>
+        <p data-aos="fade-right" class="text-base text-gray-700 dark:text-gray-400 text-right">
+          Permita que seus seguidores ou clientes <span class="font-bold text-cyan-600 dark:text-cyan-300">se conectem</span> em sua plataforma. Aumente o engajamento e permita que os
+          participantes <span class="font-bold text-cyan-600 dark:text-cyan-300">aprendam uns com os outros</span> de forma interativa.
+        </p>
+      </div>
+    </div>
+
+    <div class="div3 mt-8 ml-8 group">
+      <div class="max-w-md">
+        <div data-aos="fade-down"
+          class="flex ml-auto mr-0 items-center justify-center w-16 h-16 mb-4 rounded-full bg-fuchsia-300 dark:bg-fuchsia-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:scale-125 stroke-black dark:stroke-white" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <h2 data-aos="fade-right" class="mb-2 text-xl font-semibold leading-5 text-right dark:text-gray-50">Inclusão</h2>
+        <p data-aos="fade-right" class="text-base text-gray-700 dark:text-gray-400 text-right">
+          Nossas plataformas possuem funcionalidades de <span class="font-bold text-cyan-600 dark:text-cyan-300">Acessibilidade</span> e inteligência artificial com tradução em <span class="font-bold text-cyan-600 dark:text-cyan-300">LIBRAS</span>.
+          A acessibilidade na web traz benefícios para todos, principalmente para pessoas com deficiência e mobilidade
+          reduzida.
+        </p>
+      </div>
+    </div>
+
+    <div data-aos="zoom-in-up" class="div4 flex items-center justify-center">
+      <img class="mr-8 mt-6" src="/content/recursos-da-plataforma-alta-performance-ead.png" alt="">
+    </div>
+
+    <div class="div5 mr-8 group">
+      <div class="max-w-md">
+        <div data-aos="fade-down"
+          class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-orange-300 dark:bg-orange-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:scale-125 stroke-black dark:stroke-white" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h2 data-aos="fade-left"  class="mb-2 text-xl font-semibold leading-5 dark:text-gray-50">Vendas de Cursos</h2>
+        <p data-aos="fade-left" class="text-base text-gray-700 dark:text-gray-400">
+          Venda o acesso ao seu conteúdo e/ou comunidade por <span class="font-bold text-cyan-600 dark:text-cyan-300">compra única ou assinatura recorrente</span>. Sua plataforma
+          poderá ser integrada a aos <span class="font-bold text-cyan-600 dark:text-cyan-300">maiores meios de pagamento</span> do mercado.
+        </p>
+      </div>
+    </div>
+
+    <div class="div6 mt-8 mr-8 group">
+      <div class="max-w-md">
+        <div data-aos="fade-down"
+          class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-amber-300 dark:bg-amber-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 group-hover:scale-125 stroke-black dark:stroke-white" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          </svg>
+        </div>
+        <h2 data-aos="fade-left" class="mb-2 text-xl font-semibold leading-5 dark:text-gray-50">Gamificação</h2>
+        <p data-aos="fade-left" class="text-base text-gray-700 dark:text-gray-400">
+          <span class="font-bold text-cyan-600 dark:text-cyan-300">Envolva e estimule seus usuários</span> a executarem ações dentro da plataforma. Faça com que <span class="font-bold text-cyan-600 dark:text-cyan-300">alcancem objetivos
+          comuns</span> que trarão: pontos, distintivos, recompensas, classificações, certificados e conquistas.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="relative mt-32 mb-0 max-w-screen-2xl m-auto">
+    <div class="absolute inset-0 flex items-center px-10" aria-hidden="true">
+      <div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+    </div>
+    <br>
+  </div>
+
+  <!-- APLICATIVO -->
+  <div class="-m-6">
+    <div class="max-w-screen-2xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
+        <div class="grid grid-cols-1 items-center gap-y-10 gap-x-16 lg:grid-cols-2 text-center lg:text-left">
+          <div data-aos="fade-right" class="ml-5">
+            <h2 class="font-sans ml-6 text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+              <span class="inline-block mb-2">Seu próprio
+                <span
+                  class="block text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-600 xl:inline">APLICATIVO
+                  nativo</span>
+                <br>na Apple Store e Google Play Store, <br> com sua Marca</span>
+            </h2>
+            <h2 class="mt-3 ml-6 max-w-md mx-auto text-lg text-gray-500 dark:text-gray-400 sm:text-2xl md:mt-5 md:max-w-3xl">Destaque-se da
+              multidão e use a plataforma EAD como base para lançar seu próprio aplicativo móvel nativo para iOS e
+              Android!
+              Fornecemos a você todas as opções necessárias para personalizar seu aplicativo com todas as
+              funcionalidades.</h2>
+          </div>
+          <div data-aos="fade-left"
+            class="aspect-w-3 aspect-h-2 overflow-hidden mt-0 sm:mt-8  flex items-center justify-center">
+            <img src="/content/apresentacao-do-aplicativo-alta-performance-ead.png" class="object-center w-3/4"
+              alt="Serviços prestados pela alta performance web - Na imagem: uma filmadora, um celular, um laptop e um computador de mesa, indicando quais serviços alcançamos.">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <!--<div class="relative mt-10 mb-0">
+    <div class="absolute inset-0 flex items-center px-32" aria-hidden="true">
+      <div class="w-full border-t border-gray-300"></div>  
+    </div>
+    <br>
+  </div> -->
+
+  <!-- SEÇÃO COM AS TELAS DE GRAVAÇÃO -->
+  <div class="-m-6 bg-blue-50 dark:bg-slate-700">
+    <div class="max-w-screen-2xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
+        <div class="grid grid-cols-1 items-center gap-y-10  lg:grid-cols-2 text-center lg:text-left">
+          <div data-aos="fade-right"
+            class="w-[105%] overflow-hidden mt-0 sm:mt-8  flex items-center justify-center">
+            <img src="/content/fundo-de-tela-gravacoes-alta-performance-ead.png"
+              class="object-center bg-cover lg:-ml-16 "
+              alt="Serviços prestados pela alta performance web - Na imagem: uma filmadora, um celular, um laptop e um computador de mesa, indicando quais serviços alcançamos.">
+          </div>
+          <div data-aos="fade-left" class="ml-5">
+            <h2 class="font-sans ml-6 text-3xl font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+              <span class="inline-block mb-2">Grave seu curso ou treinamento <br> em
+                <span
+                  class="block text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-600 xl:inline">Estúdio
+                  PROFISSIONAL</span></span>
+            </h2>
+            <h2 class="mt-3 ml-6 max-w-md mx-auto text-lg text-gray-500 dark:text-gray-300 sm:text-2xl md:mt-5 md:max-w-3xl">Realizamos as
+              produções de Cursos Online e Treinamentos em nosso <span class="font-bold text-cyan-600 dark:text-cyan-300">Estúdio Profissional</span> de Criação de Cursos. Entendemos
+              qual a sua necessidade para estruturar o seu projeto e oferecemos as <span class="font-bold text-cyan-600 dark:text-cyan-300">melhores soluções</span> para torná-lo
+              realidade.</h2>
+            <div data-aos="zoom-in-up" class="mt-10 ml-6 sm:flex sm:justify-center lg:justify-start">
+              <div class="rounded-md shadow">
+                <a href="#"
+                  class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 md:py-4 md:text-lg md:px-10">
+                  Entre em contato </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL PARCEIROS -->
+  <h2 data-aos="fade-down"
+    class="font-sans m-6 text-center text-3xl mt-28 mb-16 font-bold leading-none tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+    <span class="inline-block mb-2">Quem
+      <span
+        class="block text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-600 xl:inline">confia</span>
+      no nosso trabalho</span>
+  </h2>
+  <div data-aos="fade-up" class="w-4/5 m-auto">
+    <div class="carousel m-auto max-w-screen-2xl my-20"
+      data-flickity='{ "autoPlay": 2500, "wrapAround": true, "pageDots": false, "prevNextButtons": false }'>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Instituto-phorte-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            É uma instituição pública federal de ensino superior brasileira, cuja reitoria está localizada em Mossoró.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Conhecimentos-Pedagogicos-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Cursos voltados para concursos da área pedagógica.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/UFERSA-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            É uma instituição pública federal de ensino superior brasileira, cuja reitoria está localizada em Mossoró.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Quebrando-as-Bancas-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Único curso 191% focado no concurso da PRF. Toda jornada começa com um primeiro passo!
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Toque-de-Mestre-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Conectamos você com pessoas inspiradoras, nas mais diversas áreas. Seja artista, atleta, chef de cozinha ou
+            comunicador.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Romulo-Passos-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Rômulo Passos é o site pioneiro da área, sendo referência nacional pelos cursos escritos que mais aprovam na
+            saúde.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Politize-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            O Politize! é uma organização da sociedade civil que tem a missão de formar uma geração de cidadãos
+            conscientes.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Instituto-Sabin-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Foi criado em 2005 com a missão de coordenar as ações de responsabilidade social já existentes no Grupo
+            Sabin.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Fernanda-Barboza-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Cursos e mentorias voltados para a área da saúde.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Alfacon-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            O AlfaCon é o Preparatório Que Mais Aprova no Brasil.
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Ah-Matematica-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Cursos de matemática voltados para vestibulares.
+          </p>
+        </div>
+
+      </section>
+      <!-- CARD CAROUSEL -->
+      <section class="carousel-cell  mx-auto max-w-sm ml-6 mr-6 lg:mr-6 my-5">
+        <img class="w-full bg-white rounded-lg h-auto" src="/content/empresas/Professora-Poly-Logo.png" alt="" />
+        <div class="p-7 my-auto pb-10 ">
+          <p class="text-base text-gray-400 mt-2">
+            Cursos específicos de enfermagem que irão te ajudar a realizar o sonho da aprovação.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- SEÇÃO COM O MAPA -->
+  <div style="width: 99%" class="flex justify-center"><iframe width="100%" height="250" frameborder="0" scrolling="no"
+      marginheight="0" marginwidth="0"
+      src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q=alta%20performance%20web+(Alta%20Performance%20EAD)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+        href="https://www.gps.ie/sport-gps/">bike gps</a></iframe>
+  </div>
+
+  <!-- FOOTER-->
+  <footer class="bg-sky-50 dark:bg-slate-900" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:pt-16  lg:pb-9">
+      <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div class="space-y-8 xl:col-span-1">
+          <img class="h-8" src="/content/logo-alta-performance-ead.svg" alt="Logo da Ata Perfomance EAD">
+          <p class="text-gray-500 dark:text-gray-50 text-base">Desenvolvemos tecnologia para Educação à Distância com Aplicativos e
+            Plataformas EAD personalizadas e exclusivas. Oferecemos a melhor Produção profissional para o seu Curso
+            Online.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-gray-500 dark:hover:text-white">
+              <span class="sr-only">Facebook</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+
+            <a href="#" class="text-gray-400 hover:text-gray-500 dark:hover:text-white">
+              <span class="sr-only">Instagram</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+
+            <a href="#" class="text-gray-400 hover:text-gray-500 dark:hover:text-white">
+              <span class="sr-only">Twitter</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+              </svg>
+            </a>
+
+            <a href="#" class="text-gray-400 hover:text-gray-500 dark:hover:text-white">
+              <span class="sr-only">GitHub</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+
+            <a href="#" class="text-gray-400 hover:text-gray-500 dark:hover:text-white">
+              <span class="sr-only">Dribbble</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="mt-12 lg:ml-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+          <div class="md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 dark:text-gray-50 tracking-wider uppercase">Navegue pelo site</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"> Home </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    Plataforma de Cursos Online e Treinamentos </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    Aplicativo Integrado à Plataforma EAD </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    Produção de Cursos Online </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    Blog </a>
+                </li>
+
+                <li>
+                  <a href="#" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"> Entre em contato </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 dark:text-gray-50 tracking-wider uppercase">Entre em contato</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="mailto:ola@altaperformanceead.com.br" class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    ola@altaperformanceead.com.br </a>
+                </li>
+
+                <li>
+                  <a href="https://api.whatsapp.com/send?phone=+5561993973183"
+                    class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"> (61) 9 9397-3183 </a>
+                </li>
+
+                <!-- DIVIDER -->
+                <div class="relative m-auto">
+                  <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+                  </div>
+                  <br>
+                </div>
+
+                <li>
+                  <a href="https://api.whatsapp.com/send?phone=+5561993973183"
+                    class="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"> Edifício City Offices - 223 <br> SIG Lotes 420,
+                    430 e 440, EPIG, Brasília – DF </a>
+                </li>
+                <li>
+                  <div class="rounded-md shadow pt-7 w-2/3">
+                    <a href="#"
+                      class="flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-cyan-400 hover:bg-cyan-300 md:py-2 md:text-lg md:px-2">
+                      PORTAL DO CLIENTE </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+
+        <p class="text-base text-gray-400 xl:text-center"> Desenvolvido orgulhosamente por Alta Perfomance EAD. </p>
+        <p class="text-base text-gray-400 xl:text-center">&copy; 2022 Alta Performance. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS JS -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <!-- INICIA ANIMAÇÕES DO AOS -->
+  <script>  AOS.init(); </script>
+  <script src="/src/app.js"></script>
+  <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+
+</body>
+
+</html>
